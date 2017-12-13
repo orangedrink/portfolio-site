@@ -9,7 +9,7 @@ import { BandoComponent } from './bandos/bando/bando.component';
 import { AboutComponent } from './about/about.component';
 import { ChicagoOpenDataService } from './chicago-open-data.service';
 import {HttpModule} from '@angular/http';
-
+import { FormsModule }   from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +22,8 @@ import {HttpModule} from '@angular/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   providers: [ChicagoOpenDataService],
   bootstrap: [AppComponent]

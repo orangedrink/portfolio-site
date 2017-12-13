@@ -8,10 +8,15 @@ import { ChicagoOpenDataService } from '../chicago-open-data.service';
 })
 export class BandosComponent implements OnInit {
   bandos = [];
-  
+
   constructor(private chicagoOpenDataService: ChicagoOpenDataService) { }
 
+  query(queryString:string){
+    this.chicagoOpenDataService.getBandos(queryString).subscribe(data => this.bandos = data);
+    return false;
+  }
+
   ngOnInit() {
-    this.chicagoOpenDataService.getBandos('').subscribe(data => this.bandos = data);
+    this.chicagoOpenDataService.getBandos('$limit=10').subscribe(data => this.bandos = data);
   }
 }

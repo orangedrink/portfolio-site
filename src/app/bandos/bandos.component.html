@@ -1,3 +1,6 @@
+<form (ngSubmit)="query(this.q)">
+  <input type="text" name='query' [(ngModel)]="q"/>
+</form>
 <div class="container" *ngFor="let bando of bandos">
   <app-bando [bando]="bando"></app-bando>
 </div>
