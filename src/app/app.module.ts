@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { BandosComponent } from './bandos/bandos.component';
 import { BandoComponent } from './bandos/bando/bando.component';
 import { AboutComponent } from './about/about.component';
+import { ChicagoOpenDataService } from './chicago-open-data.service';
+import {HttpModule} from '@angular/http';
+
 
 
 @NgModule({
@@ -18,9 +21,10 @@ import { AboutComponent } from './about/about.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [ChicagoOpenDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
