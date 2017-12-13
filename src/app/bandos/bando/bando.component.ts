@@ -8,7 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BandoComponent implements OnInit {
   @Input() bando: any;
   constructor() { }
-
+  getAddress(){
+    return `${this.bando.address_street_number} ${this.bando.address_street_direction} ${this.bando.address_street_name} CHICAGO`;
+  };
   ngOnInit() {
   }
 
