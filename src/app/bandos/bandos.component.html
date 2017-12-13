@@ -1,4 +1,3 @@
-<p>
-  bandos works!
-</p>
-<app-bando></app-bando>
+<div class="container" *ngFor="let bando of bandos">
+  <app-bando [bando]="bando"></app-bando>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-bando',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bando.component.css']
 })
 export class BandoComponent implements OnInit {
-
+  @Input() bando: any;
   constructor() { }
 
   ngOnInit() {
