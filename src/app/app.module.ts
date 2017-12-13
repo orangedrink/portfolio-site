@@ -4,11 +4,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { BandosComponent } from './bandos/bandos.component';
+import { BandoComponent } from './bandos/bando/bando.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BandosComponent,
+    BandoComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
