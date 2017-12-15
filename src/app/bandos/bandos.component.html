@@ -1,5 +1,9 @@
-<form (ngSubmit)="query(this.q)">
-  <input type="text" name='query' [(ngModel)]="q"/>
+<form (ngSubmit)="command(this.inputCommand)">
+  <ul>
+    <li>BandoHacker Command Prompt v1.0</li>
+    <li *ngFor="let line of cmdLines">{{line}}</li>
+    <li> <label  [hidden]="loading" for="query">{{prompt}}</label> <input type="text" id="query" name='query' autocomplete="off" autofocus [(ngModel)]="inputCommand"/></li>
+  </ul>
 </form>
 <div class="container" *ngFor="let bando of bandos">
   <app-bando [bando]="bando"></app-bando>

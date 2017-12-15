@@ -1,0 +1,11 @@
+input{
+	min-width: 55%;
+	background: #222222;
+	border: none;
+	outline: none;
+}
+
+ul li{
+	text-decoration: none;
+	list-style: none
+}
