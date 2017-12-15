@@ -43,7 +43,7 @@ export class BandosComponent implements OnInit {
           str += key + "=" + encodeURIComponent(params[key]);
       }
       console.log(str)
-      this.command('$limit=10');
+      this.command('$limit=100');
     });
   }
 }
