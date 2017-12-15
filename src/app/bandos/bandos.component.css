@@ -1,6 +1,6 @@
 input{
 	min-width: 55%;
-	background: #222222;
+	background: #111111;
 	border: none;
 	outline: none;
 }
@@ -8,4 +8,9 @@ input{
 ul li{
 	text-decoration: none;
 	list-style: none
+}
+
+label{
+	color: rgb(6, 215, 6);
+	
 }

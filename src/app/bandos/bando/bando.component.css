@@ -1,0 +1,11 @@
+pre{
+	background-color: #222222;
+	color: rgb(6, 148, 6);
+	border-color: rgb(6, 178, 6);
+	border-style: dashed;
+	border-width: medium; 
+}
+
+a{
+	color: rgb(6, 235, 6);
+}
