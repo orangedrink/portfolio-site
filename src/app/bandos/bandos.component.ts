@@ -21,7 +21,7 @@ export class BandosComponent implements OnInit {
     this.bandos = [];
     this.loading = true;
     this.cmdLines.push(`${this.prompt} ${queryString}`);
-    this.chicagoOpenDataService.getBandos(queryString.replace(' ','&')).subscribe(data => {
+    this.chicagoOpenDataService.getBandos(queryString.replace(/ /g,'&')).subscribe(data => {
       this.bandos = data;
       this.cmdLines.push(`Success: ${data.length} bandos found.`);
       this.loading = false;
@@ -43,7 +43,7 @@ export class BandosComponent implements OnInit {
           str += key + "=" + encodeURIComponent(params[key]);
       }
       console.log(str)
-      this.command('$limit=100');
+      this.command('$limit=30 $order=date_service_request_was_received+DESC');
     });
   }
 }
