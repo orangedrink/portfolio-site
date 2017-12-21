@@ -1,12 +1,29 @@
-<div class="terminal">
-  <form (ngSubmit)="command(this.inputCommand)">
-    <ul>
-      <li>BandoHacker Command Prompt v1.0</li>
-      <li *ngFor="let line of cmdLines">{{line}}</li>
-      <li> <label  [hidden]="loading" for="query">{{prompt}}</label> <input type="text" id="query" name='query' autocomplete="off" autofocus [(ngModel)]="inputCommand"/></li>
-    </ul>
-  </form>
+<label for="query">
+    <div class="panel panel-default">
+  <div class="panel-heading" (click)="commandWindowOpen = !commandWindowOpen">
+    <h5 class="panel-title">C:\Users\Orangedrink\hack_tools\BandoHacker.exe
+      <span [hidden]="!commandWindowOpen">
+        <span class="pull-right glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+      </span>
+      <span [hidden]="commandWindowOpen">
+        <span class="pull-right glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+      </span>
+    </h5>
+  </div>
+      <div [hidden]="!commandWindowOpen" class="panel-body" id="terminal">
+      <form (ngSubmit)="command(this.inputCommand)">
+        <ul>
+          <li>BandoHacker Command Prompt v1.0</li>
+          <li *ngFor="let line of cmdLines">{{line}}</li>
+          <li>
+            <label class="prompt" [hidden]="loading" for="query">{{prompt}}</label>
+            <input type="text" id="query" name='query' autocomplete="off" autofocus [(ngModel)]="inputCommand" />
+          </li>
+        </ul>
+      </form>
+  </div>
 </div>
+</label>
 <div class="bandos container-fluid" *ngFor="let bando of bandos">
   <app-bando [bando]="bando"></app-bando>
 </div>
