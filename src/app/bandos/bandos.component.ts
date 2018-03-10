@@ -12,8 +12,9 @@ export class BandosComponent implements OnInit {
   cmdLines = [];
   inputCommand: string;
   loading: boolean = false;
-  prompt: string = "BandoHacker>>";
+  prompt: string = "Orangedrink>>";
   commandWindowOpen = true;
+  historyIndex: number = 0;
 
   constructor(private chicagoOpenDataService: ChicagoOpenDataService, private activatedRoute: ActivatedRoute) {
   }
@@ -22,12 +23,17 @@ export class BandosComponent implements OnInit {
     var objDiv = document.getElementById("terminal");
     objDiv.scrollTop = objDiv.scrollHeight;
   }
-  
+
+  keyHandler(event) {
+    console.log(event, event.keyCode, event.keyIdentifier);
+ } 
+ 
   command(queryString: string = '') {
     this.inputCommand = '';
     this.bandos = [];
     this.loading = true;
     this.cmdLines.push(`${this.prompt} ${queryString}`);
+    this.historyIndex = this.cmdLines.length;
     this.chicagoOpenDataService.getBandos(queryString.replace(/ /g, '&')).subscribe(data => {
       this.bandos = data;
       this.cmdLines.push(`Success: ${data.length} bandos found.`);

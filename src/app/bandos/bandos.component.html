@@ -17,7 +17,7 @@
           <li *ngFor="let line of cmdLines">{{line}}</li>
           <li>
             <label class="prompt" [hidden]="loading" for="query">{{prompt}}</label>
-            <input type="text" id="query" name='query' autocomplete="off" autofocus [(ngModel)]="inputCommand" />
+            <input type="text" id="query" name='query' autocomplete="off" autofocus [(ngModel)]="inputCommand" (keypress)="keyHandler($event)" />
           </li>
         </ul>
       </form>
