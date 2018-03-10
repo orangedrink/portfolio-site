@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PagesComponent } from './pages/pages.component';
-const routes: Routes = [
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
-  { path: 'pages', component: PagesComponent },];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
