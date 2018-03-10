@@ -24,7 +24,7 @@ export class PagesComponent implements OnInit {
   }
 
   keyHandler(event) {
-    console.log(event, event.keyCode, event.keyIdentifier);
+    //console.log(event, event.keyCode, event.keyIdentifier);
  } 
  
   command(queryString: string = '') {
