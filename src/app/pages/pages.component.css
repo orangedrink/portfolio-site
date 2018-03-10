@@ -1,0 +1,42 @@
+input{
+	min-width: 55%;
+	background: #111111;
+	border: none;
+	outline: none;
+}
+
+ul li{
+	text-decoration: none;
+	list-style: none
+}
+
+label.prompt{
+	color: rgb(6, 215, 6);
+	
+}
+
+.panel{
+	width: 650px;
+	border-color: #333;
+	position: fixed;
+	z-index: 3;
+}
+
+#terminal{
+	background-color: #111111;
+	overflow-y: scroll;
+	height: 250px;
+}
+.panel-heading{
+	background: linear-gradient(#666666, #000000);
+	border-color: #333;
+}
+
+.panel-heading .panel-title{
+	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+	color: #ffffff;
+}
+
+.bandos{
+	padding-top: 50px;
+}

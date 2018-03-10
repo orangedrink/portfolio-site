@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BandosComponent } from './bandos/bandos.component';
+import { PagesComponent } from './pages/pages.component';
 const routes: Routes = [
-  { path: '', redirectTo: 'bandos', pathMatch: 'full' },
-  { path: 'bandos', component: BandosComponent },];
+  { path: '', redirectTo: 'pages', pathMatch: 'full' },
+  { path: 'pages', component: PagesComponent },];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

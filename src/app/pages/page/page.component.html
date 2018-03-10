@@ -1,0 +1,22 @@
+<h4>{{getAddress()}}</h4>
+<div class="col-md-6">
+  <img class="img-responsive" src="https://maps.googleapis.com/maps/api/streetview?size=600x400&location={{getAddress()}}&key=AIzaSyDusaM9H6_JM3gxsqsXKSq7Wglc7RsfLG8"
+  />
+  <div class="container-fluid">
+    <div class="col-xs-6">
+      <span>
+        Community area: {{getNeighborhood(bando.community_area)}}
+      </span>
+    </div>
+    <div class="col-xs-6">
+        <a href="https://www.google.com/maps/place/{{getAddress()}}" target="_blank">[view on google maps]</a><br />
+        <a href="https://www.bing.com/maps?v=2&where1={{getAddress()}}"  target="_blank">[view on bing maps]</a>
+      </div>
+  </div>
+</div>
+<div class="col-md-6">
+  <pre>
+raw_bando_data:
+  {{bando | json}}
+</pre>
+</div>
