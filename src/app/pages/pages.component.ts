@@ -47,12 +47,30 @@ export class PagesComponent implements OnInit {
     console.log(e);
     if(target=='terminal'){
       this.terminal.closed=false;
+      this.terminal.maximized = false;
       this.terminal.minimized=!this.terminal.minimized;
       this.terminal.onTop=false;
     }else{
       this.notes.closed=false;
+      this.notes.maximized = false;
       this.notes.minimized=!this.notes.minimized;
       this.notes.onTop=false;
+    }
+    e.stopPropagation();
+    e.preventDefault();
+  }
+  maximizeWindow(e, target){
+    console.log(e);
+    if(target=='terminal'){
+      this.terminal.closed=false;
+      this.terminal.minimized = false;
+      this.terminal.maximized=!this.terminal.maximized;
+      this.toTop('terminal');
+    }else{
+      this.notes.closed=false;
+      this.notes.minimized = false;
+      this.notes.maximized=!this.notes.maximized;
+      this.toTop('notes');
     }
     e.stopPropagation();
     e.preventDefault();

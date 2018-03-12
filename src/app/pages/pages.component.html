@@ -1,12 +1,10 @@
-{{terminal |json}}
-{{notes |json}}
 <span (click)="command('pages', terminal, notes)">test</span>
 <div class="container">
   <label for="query">
-    <div class="terminal panel panel-default" [ngClass]="{onTop: terminal.onTop, closed: terminal.closed, minimized: terminal.minimized, maximized: maximized}" (click)="toTop('terminal')">
+    <div class="terminal panel panel-default" [ngClass]="{onTop: terminal.onTop, closed: terminal.closed, minimized: terminal.minimized, maximized: terminal.maximized}" (click)="toTop('terminal')">
       <div class="panel-heading">
         <h5 class="panel-title">cmd.exe
-          <span class="buttons pull-right"><img src="/assets/minimize-button.jpg" (click)="minimizeWindow($event, 'terminal')" /><img src="/assets/maximize-button.jpg" /><img src="/assets/close-button.jpg" (click)="closeWindow($event, 'terminal'); false"/></span>
+          <span class="buttons pull-right"><img src="/assets/minimize-button.jpg" (click)="minimizeWindow($event, 'terminal')" /><img src="/assets/maximize-button.jpg" (click)="maximizeWindow($event, 'terminal')" /><img src="/assets/close-button.jpg" (click)="closeWindow($event, 'terminal'); false"/></span>
         </h5>
       </div>
         <div class="panel-body" id="terminal">
@@ -26,7 +24,7 @@
     <div class="notepad panel panel-default" [ngClass]="{onTop: notes.onTop, closed: notes.closed, minimized: notes.minimized, maximized: notes.maximized}" (click)="toTop('notes')">
       <div class="panel-heading" (click)="commandWindowOpen = !commandWindowOpen">
         <h5 class="panel-title">notepad.exe
-          <span class="buttons pull-right"><img src="/assets/minimize-button.jpg" (click)="minimizeWindow($event, 'notes')" /><img src="/assets/maximize-button.jpg" /><img src="/assets/close-button.jpg" (click)="closeWindow($event, 'notes')"/></span>
+          <span class="buttons pull-right"><img src="/assets/minimize-button.jpg" (click)="minimizeWindow($event, 'notes')" /><img src="/assets/maximize-button.jpg" (click)="maximizeWindow($event, 'notes')" /><img src="/assets/close-button.jpg" (click)="closeWindow($event, 'notes')"/></span>
         </h5>
       </div>
       <div class="pages container-fluid" *ngFor="let page of pages">
