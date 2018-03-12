@@ -2,6 +2,9 @@
 	height:80%;
 }
 
+.panel{
+	margin-bottom: 0;
+}
 input{
 	min-width: 55%;
 	background: #111111;
@@ -26,18 +29,26 @@ label.prompt{
 	border-width: 2px;
 	position: absolute;
 	z-index: 5;
+	max-height: 100%;
 }
 .notepad.panel{
 	right: 1%;
 	top:55px;
-	min-height: 70%;
 	min-width: 98%;
 	border-color: #1757c3;
 	border-width: 2px;
 	position: absolute;
 	margin: 0;
+	height: 70%;
 }
-
+.minimized .notes{
+	height: 0;
+}
+.notes{
+	height: 100%;
+	overflow-y: scroll;
+	background-color: #ffffff;
+}
 .onTop{
 	z-index: 10;
 }
@@ -65,9 +76,14 @@ label.prompt{
 	left: 2px;
 }
 
+.notepad.panel.maximized .notes{
+	height: calc(100% - 34px);
+}
+
 .notepad.panel.minimized{
-	left: 205px;
-	right: auto;;
+		left: 205px;
+	right: auto;
+	height: auto;
 }
 
 .minimized .panel-body, .minimized .pages{

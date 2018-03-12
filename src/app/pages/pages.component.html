@@ -27,8 +27,8 @@
           <span class="buttons pull-right"><img src="/assets/minimize-button.jpg" (click)="minimizeWindow($event, 'notes')" /><img src="/assets/maximize-button.jpg" (click)="maximizeWindow($event, 'notes')" /><img src="/assets/close-button.jpg" (click)="closeWindow($event, 'notes')"/></span>
         </h5>
       </div>
-      <div class="pages container-fluid" *ngFor="let page of pages">
-        <app-page [page]="page"></app-page>
+      <div class="notes">
+        <app-page *ngFor="let page of pages" [page]="page"></app-page>
       </div>
     </div>
   </div>
