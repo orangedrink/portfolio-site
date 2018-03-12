@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+html, body, app-root, app-pages{
+	height: 100%;
+
+}
+
 body{
 	font-family: Consolas, 'Courier New', monospace;
 	background-color: #111111;

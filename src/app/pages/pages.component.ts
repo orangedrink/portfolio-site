@@ -27,6 +27,10 @@ export class PagesComponent implements OnInit {
     window.closed = true;
     console.log(window);
   }
+  minimizeWindow(window){
+    window.minimized = !window.minimized;
+    console.log(window);
+  }
   keyHandler(event) {
     //console.log(event, event.keyCode, event.keyIdentifier);
   } 
@@ -43,14 +47,15 @@ export class PagesComponent implements OnInit {
       this.toTop(terminalWindow, notesWindow);
     }
     this.inputCommand = '';
-    this.pages = [];
+    //this.pages = [];
     this.loading = true;
     this.cmdLines.push(`${this.prompt} ${queryString}`);
     this.historyIndex = this.cmdLines.length;
     
     if(queryString=='pages'){
       this.cmdLines.push(`pages command syntax:`);
-      this.pages.push("test")
+      this.pages.push("test");
+      this.toTop(notesWindow, terminalWindow)
       this.loading = false;
       setTimeout(this.scrollTerminal, 10);
     }else{

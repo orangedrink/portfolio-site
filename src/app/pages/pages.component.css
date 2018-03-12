@@ -1,5 +1,5 @@
 .container{
-	position: relative;
+	height:80%;
 }
 
 input{
@@ -29,12 +29,13 @@ label.prompt{
 }
 .notepad.panel{
 	right: 1%;
-	top:50px;
-	min-height: 400px;
+	top:55px;
+	min-height: 70%;
 	min-width: 98%;
 	border-color: #1757c3;
 	border-width: 2px;
 	position: absolute;
+	margin: 0;
 }
 
 .onTop{
@@ -44,6 +45,29 @@ label.prompt{
 .closed{
 	display: none;
 }
+
+.panel.minimized{
+	position: absolute;
+	bottom: 5px;
+	min-width: 200px;
+	min-height: auto;
+	top: auto;
+	margin: 0;
+}
+
+.terminal.panel.minimized{
+	left: 2px;
+}
+
+.notepad.panel.minimized{
+	left: 208px;
+	right: auto;;
+}
+
+.minimized .panel-body, .minimized .pages{
+	display: none;
+}
+
 
 #terminal{
 	background-color: #111111;
@@ -66,8 +90,4 @@ label.prompt{
 .panel-heading .panel-title{
 	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 	color: #ffffff;
-}
-
-.bandos{
-	padding-top: 50px;
 }
