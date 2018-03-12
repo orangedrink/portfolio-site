@@ -1,4 +1,9 @@
-<span (click)="command('pages', terminal, notes)">test</span>
+<span class="shortcuts">
+  <img src="/assets/about.png" (click)="command('pages', terminal, notes)">
+  <img src="/assets/portfolio.png" (click)="command('pages', terminal, notes)">
+  <img src="/assets/games.png" (click)="command('pages', terminal, notes)">
+  <img src="/assets/help.png" (click)="command('pages', terminal, notes)">
+</span>
 <div class="container">
   <label for="query">
     <div class="terminal panel panel-default" [ngClass]="{onTop: terminal.onTop, closed: terminal.closed, minimized: terminal.minimized, maximized: terminal.maximized}" (click)="toTop('terminal')">

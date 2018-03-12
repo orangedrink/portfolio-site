@@ -26,6 +26,7 @@ export class PagesComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute) {
     this.notes = new XpWindow();
+    this.notes.closed = true;
     this.terminal = new XpWindow();
   }
 
