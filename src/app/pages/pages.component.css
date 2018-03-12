@@ -1,3 +1,7 @@
+.container{
+	position: relative;
+}
+
 input{
 	min-width: 55%;
 	background: #111111;
@@ -15,11 +19,30 @@ label.prompt{
 	
 }
 
-.panel{
-	width: 650px;
-	border-color: #333;
-	position: fixed;
-	z-index: 3;
+.terminal.panel{
+	max-width: 100%;
+	min-width: 50%;
+	border-color: #1757c3;
+	border-width: 2px;
+	position: absolute;
+	z-index: 5;
+}
+.notepad.panel{
+	right: 1%;
+	top:50px;
+	min-height: 400px;
+	min-width: 98%;
+	border-color: #1757c3;
+	border-width: 2px;
+	position: absolute;
+}
+
+.onTop{
+	z-index: 10;
+}
+
+.closed{
+	display: none;
 }
 
 #terminal{
@@ -29,9 +52,17 @@ label.prompt{
 }
 .panel-heading{
 	background: linear-gradient(#666666, #000000);
-	border-color: #333;
+	background-image: url('/assets/titlebar-background.jpg');
+	height:34px;
+	border-color: #1757c3;
+	padding: 5px 2px 1px 5px;
 }
-
+	.panel-heading .buttons{
+		margin-top:-2px;
+	}
+	.panel-heading .buttons img{
+		padding: 1px;
+}
 .panel-heading .panel-title{
 	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 	color: #ffffff;

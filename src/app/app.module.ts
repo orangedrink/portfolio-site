@@ -21,7 +21,7 @@ import { PageComponent } from './pages/page/page.component';
     BandoComponent,
     AboutComponent,
     PagesComponent,
-    PageComponent
+    PageComponent,
   ],
   imports: [
     BrowserModule,

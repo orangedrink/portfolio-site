@@ -4,4 +4,7 @@ body{
 	background-color: #111111;
 	color: rgb(6, 158, 6);
 	overflow-y: scroll;
+	background-image: url('/assets/desktop-background.jpg');
+	background-size: cover;
 }
+

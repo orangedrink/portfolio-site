@@ -1,29 +1,34 @@
-<label for="query">
-  <div class="panel panel-default">
-<div class="panel-heading" (click)="commandWindowOpen = !commandWindowOpen">
-  <h5 class="panel-title">C:\Users\Orangedrink\hack_tools\BandoHacker.exe
-    <span [hidden]="!commandWindowOpen">
-      <span class="pull-right glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-    </span>
-    <span [hidden]="commandWindowOpen">
-      <span class="pull-right glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-    </span>
-  </h5>
-</div>
-    <div [hidden]="!commandWindowOpen" class="panel-body" id="terminal">
-    <form (ngSubmit)="command(this.inputCommand)">
-      <ul>
-        <li>Orangedrink Command Prompt v1.0</li>
-        <li *ngFor="let line of cmdLines">{{line}}</li>
-        <li>
-          <label class="prompt" [hidden]="loading" for="query">{{prompt}}</label>
-          <input type="text" id="query" name='query' autocomplete="off" autofocus [(ngModel)]="inputCommand" (keypress)="keyHandler($event)" />
-        </li>
-      </ul>
-    </form>
-</div>
-</div>
-</label>
-<div class="pages container-fluid" *ngFor="let page of pages">
-<app-page [page]="page"></app-page>
-</div>
+<span (click)="command('pages', terminal, notes)">test</span>
+<div class="container">
+  <label for="query">
+    <div #terminal class="terminal panel panel-default" [ngClass]="{onTop: terminal.onTop, closed: terminal.closed}" (click)="terminal.onTop=true;notes.onTop=false">
+      <div class="panel-heading">
+        <h5 class="panel-title">cmd.exe
+          <span class="buttons pull-right"><img src="/assets/minimize-button.jpg" /><img src="/assets/maximize-button.jpg" /><img src="/assets/close-button.jpg" (click)="closeWindow(terminal)"/></span>
+        </h5>
+      </div>
+        <div class="panel-body" id="terminal">
+          <form (ngSubmit)="command(this.inputCommand)">
+            <ul>
+              <li>Type 'help' to see available commands or click a shortcut.</li>
+              <li *ngFor="let line of cmdLines" [innerHTML]="line"></li> 
+              <li>
+                <label class="prompt" [hidden]="loading" for="query">{{prompt}}</label>
+                <input type="text" id="query" name='query' autocomplete="off" autofocus [(ngModel)]="inputCommand" (keypress)="keyHandler($event)" />
+              </li>
+            </ul>
+          </form>
+      </div>
+    </div>
+  </label>
+    <div #notes class="notepad panel panel-default" [ngClass]="{onTop: notes.onTop}" (click)="terminal.onTop=false;notes.onTop=true">
+      <div class="panel-heading" (click)="commandWindowOpen = !commandWindowOpen">
+        <h5 class="panel-title">notepad.exe
+          <span class="buttons pull-right"><img src="/assets/minimize-button.jpg" /><img src="/assets/maximize-button.jpg" /><img src="/assets/close-button.jpg" /></span>
+        </h5>
+      </div>
+      <div class="pages container-fluid" *ngFor="let page of pages">
+        <app-page [page]="page"></app-page>
+      </div>
+    </div>
+  </div>

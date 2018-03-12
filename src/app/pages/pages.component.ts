@@ -12,8 +12,9 @@ export class PagesComponent implements OnInit {
   inputCommand: string;
   loading: boolean = false;
   prompt: string = "Orangedrink>>";
-  commandWindowOpen = true;
   historyIndex: number = 0;
+  terminal: {};
+  notes: {};
 
   constructor(private activatedRoute: ActivatedRoute) {
   }
@@ -22,18 +23,42 @@ export class PagesComponent implements OnInit {
     var objDiv = document.getElementById("terminal");
     objDiv.scrollTop = objDiv.scrollHeight;
   }
-
+  closeWindow(window){
+    window.closed = true;
+    console.log(window);
+  }
   keyHandler(event) {
     //console.log(event, event.keyCode, event.keyIdentifier);
- } 
- 
-  command(queryString: string = '') {
+  } 
+  
+  toTop(top, bottom){
+    top.closed = false;
+    top.onTop = true;
+    bottom.onTop = false;
+  }
+
+
+  command(queryString: string = '', terminalWindow = null,  notesWindow = null) {
+    if(terminalWindow && notesWindow){
+      this.toTop(terminalWindow, notesWindow);
+    }
     this.inputCommand = '';
     this.pages = [];
     this.loading = true;
     this.cmdLines.push(`${this.prompt} ${queryString}`);
     this.historyIndex = this.cmdLines.length;
- /*    this.chicagoOpenDataService.getBandos(queryString.replace(/ /g, '&')).subscribe(data => {
+    
+    if(queryString=='pages'){
+      this.cmdLines.push(`pages command syntax:`);
+      this.pages.push("test")
+      this.loading = false;
+      setTimeout(this.scrollTerminal, 10);
+    }else{
+      this.cmdLines.push(`Command not found: ${queryString}`);
+      this.loading = false;
+      setTimeout(this.scrollTerminal, 10);
+    }
+ /* this.chicagoOpenDataService.getBandos(queryString.replace(/ /g, '&')).subscribe(data => {
       this.bandos = data;
       this.cmdLines.push(`Success: ${data.length} bandos found.`);
       this.loading = false;
@@ -43,7 +68,7 @@ export class PagesComponent implements OnInit {
       this.loading = false;
       setTimeout(this.scrollTerminal, 10);
     });
-  */   return false;
+  */return false;
   }
 
   ngOnInit() {
