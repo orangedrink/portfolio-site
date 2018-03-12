@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {PageComponent} from './page/page.component';
+import {ControlValueAccessor} from '@angular/forms';
+  
+export class XpWindow {
+    public onTop:boolean;
+    public closed:boolean;
+    public minimized:boolean;
+    public maximized:boolean;
+}
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
-  styleUrls: ['./pages.component.css']
+  styleUrls: ['./pages.component.css'],
 })
 export class PagesComponent implements OnInit {
   pages = [];
@@ -13,38 +21,65 @@ export class PagesComponent implements OnInit {
   loading: boolean = false;
   prompt: string = "Orangedrink>>";
   historyIndex: number = 0;
-  terminal: {};
-  notes: {};
+  notes: XpWindow;
+  terminal: XpWindow;
 
   constructor(private activatedRoute: ActivatedRoute) {
+    this.notes = new XpWindow();
+    this.terminal = new XpWindow();
   }
 
   scrollTerminal(){
     var objDiv = document.getElementById("terminal");
     objDiv.scrollTop = objDiv.scrollHeight;
   }
-  closeWindow(window){
-    window.closed = true;
-    console.log(window);
+  closeWindow(e, target){
+    console.log(target);
+    if(target=='terminal'){
+      this.terminal.closed=true;
+    }else{
+      this.notes.closed=true;
+    }
+    e.stopPropagation();
+    e.preventDefault();
   }
-  minimizeWindow(window){
-    window.minimized = !window.minimized;
-    console.log(window);
+  minimizeWindow(e, target){
+    console.log(e);
+    if(target=='terminal'){
+      this.terminal.closed=false;
+      this.terminal.minimized=!this.terminal.minimized;
+      this.terminal.onTop=false;
+    }else{
+      this.notes.closed=false;
+      this.notes.minimized=!this.notes.minimized;
+      this.notes.onTop=false;
+    }
+    e.stopPropagation();
+    e.preventDefault();
   }
   keyHandler(event) {
     //console.log(event, event.keyCode, event.keyIdentifier);
   } 
   
-  toTop(top, bottom){
-    top.closed = false;
-    top.onTop = true;
-    bottom.onTop = false;
+  toTop(target){
+    console.log(target);
+    if(target==='terminal'){
+      this.terminal.closed=false;
+      this.terminal.minimized=false;
+      this.terminal.onTop=true;
+      this.notes.onTop=false;
+    }else{
+      this.notes.closed=false;
+      this.notes.minimized=false;
+      this.terminal.onTop=false;
+      this.notes.onTop=true;
+    }
   }
 
 
   command(queryString: string = '', terminalWindow = null,  notesWindow = null) {
     if(terminalWindow && notesWindow){
-      this.toTop(terminalWindow, notesWindow);
+      this.toTop('terminal');
     }
     this.inputCommand = '';
     //this.pages = [];
@@ -55,7 +90,7 @@ export class PagesComponent implements OnInit {
     if(queryString=='pages'){
       this.cmdLines.push(`pages command syntax:`);
       this.pages.push("test");
-      this.toTop(notesWindow, terminalWindow)
+      this.toTop('notes')
       this.loading = false;
       setTimeout(this.scrollTerminal, 10);
     }else{

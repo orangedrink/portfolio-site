@@ -47,7 +47,6 @@ label.prompt{
 }
 
 .panel.minimized{
-	position: absolute;
 	bottom: 5px;
 	min-width: 200px;
 	min-height: auto;
@@ -60,7 +59,7 @@ label.prompt{
 }
 
 .notepad.panel.minimized{
-	left: 208px;
+	left: 205px;
 	right: auto;;
 }
 
