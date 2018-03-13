@@ -15,7 +15,7 @@ export class XpWindow {
   styleUrls: ['./desktop.component.css'],
 })
 export class DesktopComponent implements OnInit {
-  pages = [];
+  notesData = [];
   cmdLines = [];
   inputCommand: string;
   loading: boolean = false;
@@ -106,12 +106,12 @@ export class DesktopComponent implements OnInit {
     
     if(queryString=='about'||queryString=='portfolio'||queryString=='games'){
       this.cmdLines.push(`${queryString} command syntax:`);
-      this.pages.push(queryString);
+      this.notesData.push(queryString);
       this.toTop('notes')
     }else if(queryString=='secret'){
       this.cmdLines.push(`DIS THE SEEKRET COMMAND`);
-      this.pages.push("SEEKRET");
-      this.pages.push("COMMAD");
+      this.notesData.push("SEEKRET");
+      this.notesData.push("COMMAD");
       this.toTop('notes')
     }else if(queryString=='help'){
       this.cmdLines.push(`help command syntax:`);

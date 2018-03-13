@@ -12,6 +12,7 @@ import {HttpModule} from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import { DesktopComponent } from './desktop/desktop.component';
 import { PageComponent } from './desktop/page/page.component';
+import { NoteComponent } from './desktop/note/note.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { PageComponent } from './desktop/page/page.component';
     AboutComponent,
     DesktopComponent,
     PageComponent,
+    NoteComponent,
   ],
   imports: [
     BrowserModule,
