@@ -15,6 +15,7 @@
         <div class="panel-body" id="terminal">
           <form (ngSubmit)="command(this.inputCommand)">
             <ul class="cmdList">
+              <li>(c) Windows [Version 5.0.2313.438]</li>
               <li>Type 'help' to see available commands or click one of the shortcuts above.</li>
               <li *ngFor="let line of cmdLines" [innerHTML]="line | keepHtml"></li> 
               <li>
