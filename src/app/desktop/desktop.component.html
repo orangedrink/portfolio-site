@@ -1,10 +1,11 @@
-<span class="shortcuts">
-  <img src="/assets/about.png" (click)="command('about')">
-  <img src="/assets/portfolio.png" (click)="command('portfolio')">
-  <img src="/assets/games.png" (click)="command('games')">
-  <img src="/assets/help.png" (click)="command('help')">
-</span>
-<div class="container">
+<div class="container-fluid">
+  <div class="shortcuts row col-md-4 col-sm-6 col-xs-10">
+      <span class="shortcut-icon col-xs-3"><img src="/assets/about.png" (click)="command('about')"><span>About Me</span></span>
+      <span class="shortcut-icon col-xs-3"><img src="/assets/portfolio.png" (click)="command('portfolio')"><span>Portfolio</span></span>
+      <span class="shortcut-icon col-xs-3"><img src="/assets/games.png" (click)="command('games')"><span>Games</span></span>
+      <span class="shortcut-icon col-xs-3"><img src="/assets/help.png" (click)="command('help')"><span>Help</span></span>
+    </div>
+</div>
   <label for="query">
     <div movable class="terminal panel panel-default" [ngClass]="{onTop: terminal.onTop, closed: terminal.closed, minimized: terminal.minimized, maximized: terminal.maximized}" (mousedown)="toTop('terminal')">
       <div movableHandle class="panel-heading">
@@ -45,4 +46,3 @@
         <app-bando *ngFor="let bando of bandoData" [bando]="bando"></app-bando>
       </div>
     </div>
-  </div>

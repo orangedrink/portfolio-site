@@ -32,6 +32,7 @@ export class DesktopComponent implements OnInit {
     this.notes = new XpWindow();
     this.notes.closed = true;
     this.terminal = new XpWindow();
+    //this.terminal.closed=true;
   }
 
   scrollTerminal(){
@@ -108,8 +109,6 @@ export class DesktopComponent implements OnInit {
     this.loading = true;
     this.cmdLines.push(`${this.prompt} ${queryString}`);
     this.historyIndex = this.cmdLines.length;
-    this.notesData=[];
-    this.bandoData = [];
     let commandLine = queryString.split(' ');
     if(commandLine[0]=='about'||commandLine[0]=='portfolio'||commandLine[0]=='games'){
       this.cmdLines.push(`${commandLine[0]} command syntax:`);
