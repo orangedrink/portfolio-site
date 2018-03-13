@@ -1,15 +1,20 @@
 div.indent{
 	padding-left: 3em;
+	border-left: 9px dotted #ccc;
 }
 .content{
 	padding-top:.5em;
 }
 
+div.crowd-up{
+	margin-top: -2em;
+	padding-bottom: 2em;
+}
 
 h2.heavy{
-	padding-top:.5em; 
+	padding:.5em; 
 	font-size: 22pt;
-	line-height: .25em;
+	line-height: 1em;
 }
 
 .heavy{
