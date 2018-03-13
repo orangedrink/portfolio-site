@@ -66,7 +66,7 @@ ul.cmdList{
 	height:20px;
 	padding: 3px;
 	font-size: .75em;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: Tahoma, Geneva, Verdana, sans-serif;
 	border-bottom: 1px solid #c2bba8;
 }
 
@@ -173,11 +173,11 @@ ul.cmdList{
 	height: calc(100% - 34px);
 }
 .panel-heading{
-	background: linear-gradient(#666666, #000000);
 	background-image: url('/assets/titlebar-background.jpg');
 	height:34px;
 	border-color: #1757c3;
 	padding: 5px 2px 1px 5px;
+	font-family: Tahoma, Geneva, Verdana, sans-serif;
 }
 	.panel-heading .buttons{
 		margin-top:-2px;
