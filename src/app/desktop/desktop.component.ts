@@ -121,7 +121,7 @@ export class DesktopComponent implements OnInit {
         this.toTop('notes')
       }, err => {
         this.cmdLines.push(`ERROR: ${err}`);
-        this.filename='error.log';
+        this.filename='error-log';
         this.log=err;
         this.loading = false;
       });
