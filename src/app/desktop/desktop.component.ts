@@ -117,12 +117,14 @@ export class DesktopComponent implements OnInit {
         this.notesData = data;
         this.cmdLines.push(`Success: ${data.length} entries found for '${commandLine[0]}'.`);
         this.loading = false;
+        setTimeout(this.scrollTerminal, 10);
         this.filename=`${commandLine[0]}`;
         this.toTop('notes');
       }, err => {
         this.cmdLines.push(`ERROR: ${err}`);
         this.log=err;
         this.loading = false;
+        setTimeout(this.scrollTerminal, 10);
         this.filename='error-log';
         this.toTop('notes');
       });
