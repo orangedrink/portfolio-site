@@ -1,8 +1,8 @@
 <span class="shortcuts">
-  <img src="/assets/about.png" (click)="command('pages', terminal, notes)">
-  <img src="/assets/portfolio.png" (click)="command('pages', terminal, notes)">
-  <img src="/assets/games.png" (click)="command('pages', terminal, notes)">
-  <img src="/assets/help.png" (click)="command('pages', terminal, notes)">
+  <img src="/assets/about.png" (click)="command('about')">
+  <img src="/assets/portfolio.png" (click)="command('portfolio')">
+  <img src="/assets/games.png" (click)="command('games')">
+  <img src="/assets/help.png" (click)="command('help')">
 </span>
 <div class="container">
   <label for="query">
@@ -14,7 +14,7 @@
       </div>
         <div class="panel-body" id="terminal">
           <form (ngSubmit)="command(this.inputCommand)">
-            <ul>
+            <ul class="cmdList">
               <li>Type 'help' to see available commands or click a shortcut.</li>
               <li *ngFor="let line of cmdLines" [innerHTML]="line"></li> 
               <li>
