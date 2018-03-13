@@ -76,6 +76,7 @@ ul.cmdList{
 	min-height: auto;
 	top: auto;
 	margin: 0;
+	max-width: 100px;
 }
 
 .panel.maximized{
@@ -96,7 +97,7 @@ ul.cmdList{
 }
 
 .notepad.panel.minimized{
-		left: 205px;
+	left: 205px;
 	right: auto;
 	height: auto;
 }

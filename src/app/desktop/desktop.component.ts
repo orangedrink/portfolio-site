@@ -35,7 +35,6 @@ export class DesktopComponent implements OnInit {
     objDiv.scrollTop = objDiv.scrollHeight;
   }
   closeWindow(e, target){
-    console.log(target);
     if(target=='terminal'){
       this.terminal.closed=true;
       this.terminal.minimized=false;
@@ -48,10 +47,8 @@ export class DesktopComponent implements OnInit {
       this.notesData=[];
     }
     e.stopPropagation();
-    e.preventDefault();
   }
   minimizeWindow(e, target){
-    console.log(e);
     if(target=='terminal'){
       this.terminal.closed=false;
       this.terminal.maximized = false;
@@ -64,10 +61,8 @@ export class DesktopComponent implements OnInit {
       this.notes.onTop=false;
     }
     e.stopPropagation();
-    e.preventDefault();
   }
   maximizeWindow(e, target){
-    console.log(e);
     if(target=='terminal'){
       this.terminal.closed=false;
       this.terminal.minimized = false;
@@ -80,7 +75,6 @@ export class DesktopComponent implements OnInit {
       this.toTop('notes');
     }
     e.stopPropagation();
-    e.preventDefault();
   }
   keyHandler(event) {
     //console.log(event, event.keyCode, event.keyIdentifier);
