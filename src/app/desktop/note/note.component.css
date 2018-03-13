@@ -1,0 +1,23 @@
+div.indent{
+	padding-left: 3em;
+}
+.content{
+	padding-top:.5em;
+}
+
+
+h2.heavy{
+	padding-top:.5em; 
+	font-size: 22pt;
+	line-height: .25em;
+}
+
+.heavy{
+	text-shadow: 
+	-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black, 
+	-1px -1px black, 1px 1px black, -1px 1px black, 1px -1px black;
+}
+h1,h2,h3,.indent,.category{
+	padding: 0;
+	margin: 0;
+}

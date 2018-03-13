@@ -1,3 +1,13 @@
-<pre>
-  {{note | json}}
-</pre>
+<div>
+  <h2 class="heavy">&#123;</h2>
+  <div class="indent">
+      <h1>{{note.title}}: <span class="heavy">&#123;</span></h1>
+      <div class="indent">
+          <div class="content" [innerHtml]="note.content"></div>
+      </div>},
+      <div class="image">&#123; image : {{note.image||'[Not found]'}} },</div>
+      <div class="link">&#123; link : {{note.link||'[Not found]'}} },</div>
+      <div class="metadata">metadata : &#123; category : {{note.category}} }</div>
+    </div>
+  <h3>},</h3>
+</div>
