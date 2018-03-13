@@ -1,16 +1,16 @@
 <div class="container-fluid">
   <div class="shortcuts row col-md-4 col-sm-6 col-xs-10">
-      <span class="shortcut-icon col-xs-3"><img src="/assets/about.png" (click)="command('about')"><span>About Me</span></span>
-      <span class="shortcut-icon col-xs-3"><img src="/assets/portfolio.png" (click)="command('portfolio')"><span>Portfolio</span></span>
-      <span class="shortcut-icon col-xs-3"><img src="/assets/games.png" (click)="command('games')"><span>Games</span></span>
-      <span class="shortcut-icon col-xs-3"><img src="/assets/help.png" (click)="command('help')"><span>Help</span></span>
+      <span class="shortcut-icon col-xs-3"><img src="./assets/about.png" (click)="command('about')"><span>About Me</span></span>
+      <span class="shortcut-icon col-xs-3"><img src="./assets/portfolio.png" (click)="command('portfolio')"><span>Portfolio</span></span>
+      <span class="shortcut-icon col-xs-3"><img src="./assets/games.png" (click)="command('games')"><span>Games</span></span>
+      <span class="shortcut-icon col-xs-3"><img src="./assets/help.png" (click)="command('help')"><span>Help</span></span>
     </div>
 </div>
   <label for="query">
     <div movable class="terminal panel panel-default" [ngClass]="{onTop: terminal.onTop, closed: terminal.closed, minimized: terminal.minimized, maximized: terminal.maximized}" (mousedown)="toTop('terminal')">
       <div movableHandle class="panel-heading">
         <h5 class="panel-title">cmd.exe
-          <span class="buttons pull-right"><img src="/assets/minimize-button.jpg" (click)="minimizeWindow($event, 'terminal')" /><img src="/assets/maximize-button.jpg" (click)="maximizeWindow($event, 'terminal')" /><img src="/assets/close-button.jpg" (click)="closeWindow($event, 'terminal'); false"/></span>
+          <span class="buttons pull-right"><img src="./assets/minimize-button.jpg" (click)="minimizeWindow($event, 'terminal')" /><img src="./assets/maximize-button.jpg" (click)="maximizeWindow($event, 'terminal')" /><img src="./assets/close-button.jpg" (click)="closeWindow($event, 'terminal'); false"/></span>
         </h5>
       </div>
         <div class="panel-body" id="terminal">
@@ -30,8 +30,8 @@
   </label>
     <div movable class="notepad panel panel-default" [ngClass]="{onTop: notes.onTop, closed: notes.closed, minimized: notes.minimized, maximized: notes.maximized}" (mousedown)="toTop('notes')">
       <div movableHandle class="panel-heading">
-        <h5 class="panel-title"><span class="window-title"><img src="/assets/notepad.png" class="notepad-icon">{{filename}}<span *ngIf="filename">.txt - </span>Notepad</span>
-          <span class="buttons pull-right"><img src="/assets/minimize-button.jpg" (click)="minimizeWindow($event, 'notes')" /><img src="/assets/maximize-button.jpg" (click)="maximizeWindow($event, 'notes')" /><img src="/assets/close-button.jpg" (click)="closeWindow($event, 'notes')"/></span>
+        <h5 class="panel-title"><span class="window-title"><img src="./assets/notepad.png" class="notepad-icon">{{filename}}<span *ngIf="filename">.txt - </span>Notepad</span>
+          <span class="buttons pull-right"><img src="./assets/minimize-button.jpg" (click)="minimizeWindow($event, 'notes')" /><img src="./assets/maximize-button.jpg" (click)="maximizeWindow($event, 'notes')" /><img src="./assets/close-button.jpg" (click)="closeWindow($event, 'notes')"/></span>
         </h5>
       </div>
       <div class="file-menu">
