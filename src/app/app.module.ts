@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { BandosComponent } from './bandos/bandos.component';
 import { BandoComponent } from './bandos/bando/bando.component';
 import { AboutComponent } from './about/about.component';
-import { ChicagoOpenDataService } from './chicago-open-data.service';
 import {HttpModule} from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import { DesktopComponent } from './desktop/desktop.component';
@@ -32,7 +31,6 @@ import { KeepHtmlPipe } from './keep-html.pipe';
     FormsModule,
     MovableModule,
   ],
-  providers: [ChicagoOpenDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

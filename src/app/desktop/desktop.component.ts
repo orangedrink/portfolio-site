@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NoteComponent } from './note/note.component';
 import { BandoComponent } from '../bandos/bando/bando.component';
 import { ChicagoOpenDataService } from '../chicago-open-data.service';
+import { NotesService } from '../notes.service';
 export class XpWindow {
     public onTop:boolean;
     public closed:boolean;
@@ -13,6 +14,7 @@ export class XpWindow {
   selector: 'app-desktop',
   templateUrl: './desktop.component.html',
   styleUrls: ['./desktop.component.css'],
+  providers:[ChicagoOpenDataService, NotesService]
 })
 export class DesktopComponent implements OnInit {
   notesData = [];
@@ -26,7 +28,7 @@ export class DesktopComponent implements OnInit {
   notes: XpWindow;
   terminal: XpWindow;
 
-  constructor(private activatedRoute: ActivatedRoute, private chicagoOpenDataService: ChicagoOpenDataService) {
+  constructor(private activatedRoute: ActivatedRoute, private chicagoOpenDataService: ChicagoOpenDataService, private notesService: NotesService) {
     this.notes = new XpWindow();
     this.notes.closed = true;
     this.terminal = new XpWindow();
@@ -111,7 +113,17 @@ export class DesktopComponent implements OnInit {
     let commandLine = queryString.split(' ');
     if(commandLine[0]=='about'||commandLine[0]=='portfolio'||commandLine[0]=='games'){
       this.cmdLines.push(`${commandLine[0]} command syntax:`);
-      this.notesData.push(`${commandLine[0]} section coming soon`);
+      console.log(this.notesService);
+      this.notesService.getNotes(`category=${commandLine[0]}`).subscribe(data => {
+        this.notesData = data;
+        this.cmdLines.push(`Success: ${data.length} entries found for '${commandLine[0]}'.`);
+        this.loading = false;
+        this.filename=`${commandLine[0]}`;
+        this.toTop('notes')
+      }, err => {
+        this.cmdLines.push(`ERROR: ${err}`);
+        this.loading = false;
+      });
       this.filename = commandLine[0];
       this.notes.minimized=false;
       this.loading = false;
