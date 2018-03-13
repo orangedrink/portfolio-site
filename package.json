@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng build --prod --base-href \"https://orangedrink.github.io/portfolio-site/dist/\" angular-cli-ghpages --aot=false; git add --force dist/*"
   },
   "private": true,
   "dependencies": {
