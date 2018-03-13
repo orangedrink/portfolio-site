@@ -10,11 +10,11 @@ export class XpWindow {
     public maximized:boolean;
 }
 @Component({
-  selector: 'app-pages',
-  templateUrl: './pages.component.html',
-  styleUrls: ['./pages.component.css'],
+  selector: 'app-desktop',
+  templateUrl: './desktop.component.html',
+  styleUrls: ['./desktop.component.css'],
 })
-export class PagesComponent implements OnInit {
+export class DesktopComponent implements OnInit {
   pages = [];
   cmdLines = [];
   inputCommand: string;
@@ -96,7 +96,7 @@ export class PagesComponent implements OnInit {
   }
 
 
-  command(queryString: string = '', terminalWindow = null,  notesWindow = null) {
+  command(queryString: string = '') {
     this.toTop('terminal');
     this.inputCommand = '';
     //this.pages = [];
