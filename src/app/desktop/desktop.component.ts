@@ -126,9 +126,6 @@ export class DesktopComponent implements OnInit {
         this.loading = false;
       });
       this.filename = commandLine[0];
-      this.notes.minimized=false;
-      this.loading = false;
-      this.toTop('notes')
     }else if(commandLine[0]=='notepad.exe'||commandLine[0]=='notepad'){
       this.cmdLines.push(`Starting notepad.exe`);
       this.notes.minimized=false;
@@ -164,8 +161,7 @@ export class DesktopComponent implements OnInit {
       this.loading = false;
       }else{
       this.cmdLines.push(`Bad command or filename: ${commandLine[0]}`);
-      this.loading = false;
-      }
+    }
     setTimeout(this.scrollTerminal, 10);
     return false;
   }
