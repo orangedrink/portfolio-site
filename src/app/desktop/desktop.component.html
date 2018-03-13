@@ -42,6 +42,7 @@
         <span class="file-menu-item">Help</span>
       </div>
       <div class="notes">
+        <p class="log" *ngIf="log" [innerHtml]="log"></p>
         <app-note *ngFor="let note of notesData" [note]="note"></app-note>
         <app-bando *ngFor="let bando of bandoData" [bando]="bando"></app-bando>
       </div>

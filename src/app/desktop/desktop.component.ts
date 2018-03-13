@@ -22,6 +22,7 @@ export class DesktopComponent implements OnInit {
   cmdLines = [];
   inputCommand: string;
   filename: string;
+  log: string;
   loading: boolean = false;
   prompt: string = "C:\\Users\\Dave>";
   historyIndex: number = 0;
@@ -112,7 +113,6 @@ export class DesktopComponent implements OnInit {
     let commandLine = queryString.split(' ');
     if(commandLine[0]=='about'||commandLine[0]=='portfolio'||commandLine[0]=='games'){
       this.cmdLines.push(`${commandLine[0]} command syntax:`);
-      console.log(this.notesService);
       this.notesService.getNotes(`category=${commandLine[0]}`).subscribe(data => {
         this.notesData = data;
         this.cmdLines.push(`Success: ${data.length} entries found for '${commandLine[0]}'.`);
@@ -121,6 +121,8 @@ export class DesktopComponent implements OnInit {
         this.toTop('notes')
       }, err => {
         this.cmdLines.push(`ERROR: ${err}`);
+        this.filename='error.log';
+        this.log=err;
         this.loading = false;
       });
       this.filename = commandLine[0];
