@@ -56,6 +56,7 @@ ul.cmdList{
 	height: 0;
 }
 .notes{
+	font-family: Consolas, 'Courier New', monospace;
 	height: calc(100% - 34px);
 	overflow-y: scroll;
 	background-color: #ffffff;
@@ -106,9 +107,12 @@ ul.cmdList{
 
 
 #terminal{
+	font-family: Consolas, 'Courier New', monospace;
+	background-color: #111111;
+	color: rgb(6, 158, 6);
 	background-color: #111111;
 	overflow-y: scroll;
-	height: 250px;
+	height: 200px;
 }
 
 .maximized #terminal{

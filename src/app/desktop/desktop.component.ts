@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import {PageComponent} from './page/page.component';
+import {NoteComponent} from './note/note.component';
 import {ControlValueAccessor} from '@angular/forms';
   
 export class XpWindow {
@@ -19,7 +19,7 @@ export class DesktopComponent implements OnInit {
   cmdLines = [];
   inputCommand: string;
   loading: boolean = false;
-  prompt: string = "Orangedrink>>";
+  prompt: string = "C:\\Users\\Dave\\>";
   historyIndex: number = 0;
   notes: XpWindow;
   terminal: XpWindow;
@@ -38,8 +38,14 @@ export class DesktopComponent implements OnInit {
     console.log(target);
     if(target=='terminal'){
       this.terminal.closed=true;
+      this.terminal.minimized=false;
+      this.terminal.maximized=false;
+      this.cmdLines=[];
     }else{
       this.notes.closed=true;
+      this.notes.minimized=false;
+      this.notes.maximized=false;
+      this.notesData=[];
     }
     e.stopPropagation();
     e.preventDefault();
@@ -84,12 +90,10 @@ export class DesktopComponent implements OnInit {
     console.log(target);
     if(target==='terminal'){
       this.terminal.closed=false;
-      this.terminal.minimized=false;
       this.terminal.onTop=true;
       this.notes.onTop=false;
     }else{
       this.notes.closed=false;
-      this.notes.minimized=false;
       this.terminal.onTop=false;
       this.notes.onTop=true;
     }
@@ -98,6 +102,7 @@ export class DesktopComponent implements OnInit {
 
   command(queryString: string = '') {
     this.toTop('terminal');
+    this.terminal.minimized=false;
     this.inputCommand = '';
     //this.pages = [];
     this.loading = true;
@@ -106,15 +111,23 @@ export class DesktopComponent implements OnInit {
     
     if(queryString=='about'||queryString=='portfolio'||queryString=='games'){
       this.cmdLines.push(`${queryString} command syntax:`);
-      this.notesData.push(queryString);
+      this.notesData.push(`${queryString} section coming soon`);
+      this.toTop('notes')
+    }else if(queryString=='notepad.exe'){
+      this.cmdLines.push(`Starting notepad.exe`);
+      this.notes.minimized=false;
       this.toTop('notes')
     }else if(queryString=='secret'){
-      this.cmdLines.push(`DIS THE SEEKRET COMMAND`);
-      this.notesData.push("SEEKRET");
-      this.notesData.push("COMMAD");
-      this.toTop('notes')
+        this.cmdLines.push(`DIS THE SEEKRET COMMAND`);
+        this.notesData.push("SEEKRET");
+        this.notesData.push("COMMAD");
+        this.toTop('notes')
     }else if(queryString=='help'){
-      this.cmdLines.push(`help command syntax:`);
+      this.cmdLines.push(`Available commands:`);
+      this.cmdLines.push(`about`);
+      this.cmdLines.push(`portfolio`);
+      this.cmdLines.push(`games`);
+      this.cmdLines.push(`help`);
     }else{
       this.cmdLines.push(`Command not found: ${queryString}`);
     }

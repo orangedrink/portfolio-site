@@ -11,7 +11,6 @@ import { ChicagoOpenDataService } from './chicago-open-data.service';
 import {HttpModule} from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import { DesktopComponent } from './desktop/desktop.component';
-import { PageComponent } from './desktop/page/page.component';
 import { NoteComponent } from './desktop/note/note.component';
 
 
@@ -22,7 +21,6 @@ import { NoteComponent } from './desktop/note/note.component';
     BandoComponent,
     AboutComponent,
     DesktopComponent,
-    PageComponent,
     NoteComponent,
   ],
   imports: [
