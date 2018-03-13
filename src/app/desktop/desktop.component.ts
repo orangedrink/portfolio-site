@@ -118,12 +118,13 @@ export class DesktopComponent implements OnInit {
         this.cmdLines.push(`Success: ${data.length} entries found for '${commandLine[0]}'.`);
         this.loading = false;
         this.filename=`${commandLine[0]}`;
-        this.toTop('notes')
+        this.toTop('notes');
       }, err => {
         this.cmdLines.push(`ERROR: ${err}`);
-        this.filename='error-log';
         this.log=err;
         this.loading = false;
+        this.filename='error-log';
+        this.toTop('notes');
       });
       this.filename = commandLine[0];
     }else if(commandLine[0]=='notepad.exe'||commandLine[0]=='notepad'){
