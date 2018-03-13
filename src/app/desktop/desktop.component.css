@@ -3,15 +3,16 @@
 }
 
 .shortcuts img{
-	filter: drop-shadow(0 3px 10px 2px #111111);
 	margin: .75em;
-	width: 50px;
+	width: 35px;
 	height: auto;
 }
 
 .panel{
 	margin-bottom: 0;
 	box-shadow:0 3px 10px 2px #111111;
+	resize: both;
+	overflow: auto;
 }
 input{
 	min-width: 55%;
@@ -31,89 +32,141 @@ label.prompt{
 }
 ul.cmdList{
 	padding: 0;
+	margin: 0;
 }
 .terminal.panel{
 	max-width: 100%;
-	min-width: 50%;
+	width: 550px;
+	left:1%;
+	background-color: #111111;
 	border-color: #1757c3;
 	border-width: 2px;
 	position: absolute;
 	z-index: 5;
-	max-height: 100%;
-	margin-top:-30px;
+	margin-top:-22px;
+	height: 250px;
 }
 .notepad.panel{
-	right: 1%;
+	left: 5%;
 	top:75px;
-	min-width: 98%;
+	min-width: 170px;
+	width: 90%;
 	border-color: #1757c3;
 	border-width: 2px;
 	position: absolute;
 	margin: 0;
 	height: 70%;
+	max-width: 95%;
 }
+
+.file-menu{
+	background-color: #f2ebd8;
+	color: #c2bba8;
+	margin: 0;
+	height:20px;
+	padding: 3px;
+	font-size: .75em;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	border-bottom: 1px solid #c2bba8;
+}
+
+.file-menu span{
+	margin-left: .65em;
+}
+
 .minimized .notes{
-	height: 0;
+	display: none;
 }
 .notes{
 	font-family: Consolas, 'Courier New', monospace;
-	height: calc(100% - 34px);
-	overflow-y: scroll;
+	height: calc(100% - 62px);
 	background-color: #ffffff;
-	padding: 0 1em;
+	padding: .75em;
+	overflow-y: scroll;
 }
 .onTop{
 	z-index: 10;
 }
-
+.notepad-icon{
+	height: auto;
+	width: 20px;
+	margin-right: .5em;
+}
 .closed{
 	display: none;
 }
 
 .panel.minimized{
-	bottom: 5px;
+	bottom: 5px!important;
+	height:auto!important;
 	min-width: 200px;
 	min-height: auto;
-	top: auto;
+	top: auto!important;
 	margin: 0;
 	max-width: 100px;
 }
+.panel.minimized .window-title{
+	width: 80px;
+}
+.panel.notepad .window-title{
+	display:inline-block;
+	overflow: hidden;
+  white-space: nowrap;
+	text-overflow: ellipsis;
+	width: calc(100% - 85px);
+}
 
 .panel.maximized{
-	left:0;
-	top:0;
-	width: 100%;
-	height:100%;
+	left:0!important;
+	top:0!important;
+	width: 100%!important;
+	height:100%!important;
 	margin: 0;
 	padding: 0;
 }
 
 .terminal.panel.minimized{
-	left: 2px;
+	left: 2px!important;
 }
 
 .notepad.panel.maximized .notes{
-	height: calc(100% - 34px);
+	height: calc(100% - 54px);
 }
 
 .notepad.panel.minimized{
-	left: 205px;
-	right: auto;
-	height: auto;
+	left: 205px!important;
+	right: auto!important;
+	height: auto!important;
 }
 
-.minimized .panel-body, .minimized .pages{
+.minimized .panel-body, .minimized .file-menu{
 	display: none;
 }
 
 
 #terminal{
 	font-family: Consolas, 'Courier New', monospace;
-	background-color: #111111;
 	color: rgb(6, 158, 6);
-	background-color: #111111;
 	overflow-y: scroll;
-	height: 200px;
+	height: calc(100% - 44px);
+	margin: 0;
+	padding: 12px;
+}
+
+#terminal::-webkit-scrollbar {
+	width: 10px;
+}
+
+#terminal::-webkit-scrollbar-track {
+	background-color: #111;
+}
+
+#terminal::-webkit-scrollbar-thumb {
+	background-color: #333; 
+} /* this will style the thumb, ignoring the track */
+
+#terminal::-webkit-scrollbar-button {
+	background-color: #111;
 }
 
 .maximized #terminal{

@@ -12,7 +12,8 @@ import {HttpModule} from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import { DesktopComponent } from './desktop/desktop.component';
 import { NoteComponent } from './desktop/note/note.component';
-
+import { MovableModule, MovableDirective, MovableHandleDirective } from 'ng2-movable';
+import { KeepHtmlPipe } from './keep-html.pipe';
 
 @NgModule({
   declarations: [
@@ -22,12 +23,14 @@ import { NoteComponent } from './desktop/note/note.component';
     AboutComponent,
     DesktopComponent,
     NoteComponent,
+    KeepHtmlPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    MovableModule,
   ],
   providers: [ChicagoOpenDataService],
   bootstrap: [AppComponent]

@@ -1,11 +1,14 @@
-pre{
-	background-color: #222222;
-	color: rgb(6, 148, 6);
-	border-color: rgb(6, 178, 6);
-	border-style: dashed;
-	border-width: medium; 
+:host{
+	font-size: 10pt;
 }
 
-a{
-	color: rgb(6, 235, 6);
+pre{
+	border-style: dashed;
+	border-width: 1px;
+	border-color:#555; 
+}
+
+a, span, pre{
+	color: #555;
+	font-size: 8pt;
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import {NoteComponent} from './note/note.component';
-import {ControlValueAccessor} from '@angular/forms';
-  
+import { NoteComponent } from './note/note.component';
+import { BandoComponent } from '../bandos/bando/bando.component';
+import { ChicagoOpenDataService } from '../chicago-open-data.service';
 export class XpWindow {
     public onTop:boolean;
     public closed:boolean;
@@ -16,15 +16,17 @@ export class XpWindow {
 })
 export class DesktopComponent implements OnInit {
   notesData = [];
+  bandoData = [];
   cmdLines = [];
   inputCommand: string;
+  filename: string;
   loading: boolean = false;
-  prompt: string = "C:\\Users\\Dave\\>";
+  prompt: string = "C:\\Users\\Dave>";
   historyIndex: number = 0;
   notes: XpWindow;
   terminal: XpWindow;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private chicagoOpenDataService: ChicagoOpenDataService) {
     this.notes = new XpWindow();
     this.notes.closed = true;
     this.terminal = new XpWindow();
@@ -44,6 +46,7 @@ export class DesktopComponent implements OnInit {
       this.notes.closed=true;
       this.notes.minimized=false;
       this.notes.maximized=false;
+      this.filename = null;
       this.notesData=[];
     }
     e.stopPropagation();
@@ -53,12 +56,14 @@ export class DesktopComponent implements OnInit {
       this.terminal.closed=false;
       this.terminal.maximized = false;
       this.terminal.minimized=!this.terminal.minimized;
-      this.terminal.onTop=false;
+      this.terminal.onTop=!this.terminal.minimized;
+      this.notes.onTop==this.terminal.minimized ? true : false;
     }else{
       this.notes.closed=false;
       this.notes.maximized = false;
       this.notes.minimized=!this.notes.minimized;
-      this.notes.onTop=false;
+      this.notes.onTop=!this.notes.minimized;
+      this.terminal.onTop==this.notes.minimized ? true : false;
     }
     e.stopPropagation();
   }
@@ -98,47 +103,58 @@ export class DesktopComponent implements OnInit {
     this.toTop('terminal');
     this.terminal.minimized=false;
     this.inputCommand = '';
-    //this.pages = [];
     this.loading = true;
     this.cmdLines.push(`${this.prompt} ${queryString}`);
     this.historyIndex = this.cmdLines.length;
-    
-    if(queryString=='about'||queryString=='portfolio'||queryString=='games'){
-      this.cmdLines.push(`${queryString} command syntax:`);
-      this.notesData.push(`${queryString} section coming soon`);
+    this.notesData=[];
+    this.bandoData = [];
+    let commandLine = queryString.split(' ');
+    if(commandLine[0]=='about'||commandLine[0]=='portfolio'||commandLine[0]=='games'){
+      this.cmdLines.push(`${commandLine[0]} command syntax:`);
+      this.notesData.push(`${commandLine[0]} section coming soon`);
+      this.filename = commandLine[0];
+      this.notes.minimized=false;
+      this.loading = false;
       this.toTop('notes')
-    }else if(queryString=='notepad.exe'){
+    }else if(commandLine[0]=='notepad.exe'||commandLine[0]=='notepad'){
       this.cmdLines.push(`Starting notepad.exe`);
       this.notes.minimized=false;
       this.toTop('notes')
-    }else if(queryString=='secret'){
-        this.cmdLines.push(`DIS THE SEEKRET COMMAND`);
-        this.notesData.push("SEEKRET");
-        this.notesData.push("COMMAD");
+    }else if(commandLine[0]=='bandohacker.exe'||commandLine[0]=='bandohacker'||commandLine[0]=='bandos'){
+      this.chicagoOpenDataService.getBandos(commandLine[1]?commandLine[1]:'$limit=30').subscribe(data => {
+        this.bandoData = data;
+        this.cmdLines.push(`Success: ${data.length} bandos found.`);
+        this.loading = false;
+        this.filename="bandos"
         this.toTop('notes')
-    }else if(queryString=='help'){
+      }, err => {
+        this.cmdLines.push(`ERROR: ${err}`);
+        this.loading = false;
+      });
+    }else if(commandLine[0]=='cd'){
+      this.prompt = `C:\\${commandLine[1]}>`;
+      this.loading = false;
+    }else if(commandLine[0]=='help'){
       this.cmdLines.push(`Available commands:`);
-      this.cmdLines.push(`about`);
-      this.cmdLines.push(`portfolio`);
-      this.cmdLines.push(`games`);
-      this.cmdLines.push(`help`);
-    }else{
-      this.cmdLines.push(`Command not found: ${queryString}`);
-    }
-    this.loading = false;
+      this.cmdLines.push(`'about'     - Shows information about me, David Franks.`);
+      this.cmdLines.push(`'portfolio' - Shows information about my professional portfolio.`);
+      this.cmdLines.push(`'games'     - Shows information about the games that I've created.`);
+      this.cmdLines.push(`'help'      - This help text.`);
+      this.loading = false;
+    }else if(commandLine[0]=='dir'){
+      this.cmdLines.push(`05/11/2018 05:07PM &lt;DIR&gt; .`);
+      this.cmdLines.push(`05/11/2018 05:07PM &lt;DIR&gt ..`);
+      this.cmdLines.push(`05/11/2018 05:07PM 2,312 'about.lnk'`);
+      this.cmdLines.push(`05/13/2018 07:11PM 1,091 'portfolio.lnk'`);
+      this.cmdLines.push(`05/13/2018 07:13PM 2,101 'games.lnk'`);
+      this.cmdLines.push(`03/23/2018 03:26PM 889&nbsp;&nbsp; 'help.lnk'`);
+      this.loading = false;
+      }else{
+      this.cmdLines.push(`Bad command or filename: ${commandLine[0]}`);
+      this.loading = false;
+      }
     setTimeout(this.scrollTerminal, 10);
-
-    /* this.chicagoOpenDataService.getBandos(queryString.replace(/ /g, '&')).subscribe(data => {
-      this.bandos = data;
-      this.cmdLines.push(`Success: ${data.length} bandos found.`);
-      this.loading = false;
-      setTimeout(this.scrollTerminal, 10);
-    }, err => {
-      this.cmdLines.push(`ERROR: ${err}`);
-      this.loading = false;
-      setTimeout(this.scrollTerminal, 10);
-    });
-  */return false;
+    return false;
   }
 
   ngOnInit() {

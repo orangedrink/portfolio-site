@@ -88,7 +88,7 @@ export class ChicagoOpenDataService {
       76: "O'Hare",
       77: "Edgewater"
     }
-    return cas;
+    return cas[id];
   }
   
   getBandos(params) {
