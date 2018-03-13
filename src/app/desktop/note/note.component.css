@@ -1,14 +1,18 @@
 div.indent{
-	padding-left: 3em;
+	padding-left: 2em;
 	border-left: 9px dotted #ccc;
 }
+
+div.indent.small{
+	border-left: 6px dotted #ccc;
+}
+
 .content{
 	padding-top:.5em;
 }
 
 div.crowd-up{
 	margin-top: -2em;
-	padding-bottom: 2em;
 }
 
 h2.heavy{
