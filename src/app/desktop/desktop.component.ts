@@ -164,6 +164,8 @@ export class DesktopComponent implements OnInit {
       this.loading = false;
       }else{
       this.cmdLines.push(`Bad command or filename: ${commandLine[0]}`);
+      this.loading = false;
+      setTimeout(this.scrollTerminal, 10);
     }
     setTimeout(this.scrollTerminal, 10);
     return false;
