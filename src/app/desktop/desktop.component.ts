@@ -102,7 +102,53 @@ export class DesktopComponent implements OnInit {
     }
   }
 
-
+  getNotes(commandLine){
+    this.cmdLines.push(`Querying endpoint for: ${commandLine[0]} data...`);
+    this.notesData = [];
+    this.notesService.getNotes(`category=${commandLine[0]}`).subscribe(data => {
+      this.notesData = data;
+      this.cmdLines.push(`Success: ${data.length} entries found for '${commandLine[0]}'.`);
+      this.loading = false;
+      setTimeout(this.scrollTerminal, 10);
+      this.filename=`${commandLine[0]}`;
+      this.toTop('notes');
+    }, err => {
+      this.cmdLines.push(`ERROR: ${err}`);
+      this.log=err;
+      this.loading = false;
+      setTimeout(this.scrollTerminal, 10);
+      this.filename='error-log';
+      this.toTop('notes');
+    });
+    this.filename = commandLine[0];
+  }
+  geBandos(commandLine){
+    this.chicagoOpenDataService.getBandos(commandLine[1]?commandLine[1]:'$limit=30').subscribe(data => {
+      this.bandoData = data;
+      this.cmdLines.push(`Success: ${data.length} bandos found.`);
+      this.loading = false;
+      this.filename="bandos"
+      this.toTop('notes')
+    }, err => {
+      this.cmdLines.push(`ERROR: ${err}`);
+      this.loading = false;
+    });
+  }
+  showHelp(){
+    this.cmdLines.push(`Available commands:`);
+    this.cmdLines.push(`'about'     - Shows information about me, David Franks.`);
+    this.cmdLines.push(`'portfolio' - Shows information about my professional portfolio.`);
+    this.cmdLines.push(`'games'     - Shows information about the games that I've created.`);
+    this.cmdLines.push(`'help'      - This help text.`);
+  }
+  showDir(){
+    this.cmdLines.push(`05/11/2018 05:07PM &lt;DIR&gt; .`);
+    this.cmdLines.push(`05/11/2018 05:07PM &lt;DIR&gt ..`);
+    this.cmdLines.push(`05/11/2018 05:07PM 2,312 'about.lnk'`);
+    this.cmdLines.push(`05/13/2018 07:11PM 1,091 'portfolio.lnk'`);
+    this.cmdLines.push(`05/13/2018 07:13PM 2,101 'games.lnk'`);
+    this.cmdLines.push(`03/23/2018 03:26PM 889&nbsp;&nbsp; 'help.lnk'`);
+  }
   command(queryString: string = '') {
     this.toTop('terminal');
     this.terminal.minimized=false;
@@ -112,56 +158,21 @@ export class DesktopComponent implements OnInit {
     this.historyIndex = this.cmdLines.length;
     let commandLine = queryString.split(' ');
     if(commandLine[0]=='about'||commandLine[0]=='portfolio'||commandLine[0]=='games'){
-      this.cmdLines.push(`Querying endpoint for: ${commandLine[0]} data...`);
-      this.notesData = [];
-      this.notesService.getNotes(`category=${commandLine[0]}`).subscribe(data => {
-        this.notesData = data;
-        this.cmdLines.push(`Success: ${data.length} entries found for '${commandLine[0]}'.`);
-        this.loading = false;
-        setTimeout(this.scrollTerminal, 10);
-        this.filename=`${commandLine[0]}`;
-        this.toTop('notes');
-      }, err => {
-        this.cmdLines.push(`ERROR: ${err}`);
-        this.log=err;
-        this.loading = false;
-        setTimeout(this.scrollTerminal, 10);
-        this.filename='error-log';
-        this.toTop('notes');
-      });
-      this.filename = commandLine[0];
+      this.getNotes(commandLine);
     }else if(commandLine[0]=='notepad.exe'||commandLine[0]=='notepad'){
       this.cmdLines.push(`Starting notepad.exe`);
       this.notes.minimized=false;
       this.toTop('notes')
     }else if(commandLine[0]=='bandohacker.exe'||commandLine[0]=='bandohacker'||commandLine[0]=='bandos'){
-      this.chicagoOpenDataService.getBandos(commandLine[1]?commandLine[1]:'$limit=30').subscribe(data => {
-        this.bandoData = data;
-        this.cmdLines.push(`Success: ${data.length} bandos found.`);
-        this.loading = false;
-        this.filename="bandos"
-        this.toTop('notes')
-      }, err => {
-        this.cmdLines.push(`ERROR: ${err}`);
-        this.loading = false;
-      });
+      this.geBandos(commandLine);
     }else if(commandLine[0]=='cd'){
       this.prompt = `C:\\${commandLine[1]}>`;
       this.loading = false;
     }else if(commandLine[0]=='help'){
-      this.cmdLines.push(`Available commands:`);
-      this.cmdLines.push(`'about'     - Shows information about me, David Franks.`);
-      this.cmdLines.push(`'portfolio' - Shows information about my professional portfolio.`);
-      this.cmdLines.push(`'games'     - Shows information about the games that I've created.`);
-      this.cmdLines.push(`'help'      - This help text.`);
+      this.showHelp();
       this.loading = false;
     }else if(commandLine[0]=='dir'){
-      this.cmdLines.push(`05/11/2018 05:07PM &lt;DIR&gt; .`);
-      this.cmdLines.push(`05/11/2018 05:07PM &lt;DIR&gt ..`);
-      this.cmdLines.push(`05/11/2018 05:07PM 2,312 'about.lnk'`);
-      this.cmdLines.push(`05/13/2018 07:11PM 1,091 'portfolio.lnk'`);
-      this.cmdLines.push(`05/13/2018 07:13PM 2,101 'games.lnk'`);
-      this.cmdLines.push(`03/23/2018 03:26PM 889&nbsp;&nbsp; 'help.lnk'`);
+      this.showDir();
       this.loading = false;
       }else{
       this.cmdLines.push(`Bad command or filename: ${commandLine[0]}`);
