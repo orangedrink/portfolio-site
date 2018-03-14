@@ -4,7 +4,8 @@
     <div class="crowd-up">
         <h1>{{note.title}}: <span class="heavy">&#123;</span></h1>
         <div class="indent">
-            <a [href]="note.link" target="_blank"><img *ngIf="note.image" [src]="note.image.url" class="img-thumbnail" /></a>
+            <a *ngIf="note.link" [href]="note.link" target="_blank"><img *ngIf="note.image" [src]="note.image.url" class="img-thumbnail" /></a>
+            <img *ngIf="!note.link && note.image" [src]="note.image.url" class="img-thumbnail" />
             <div class="content" [innerHtml]="note.content"></div>
         </div>},
         <div class="metadata">metadata : &#123;</div>
