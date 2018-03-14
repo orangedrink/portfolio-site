@@ -24,6 +24,7 @@ h2.heavy{
 	margin: 1em;
 	width:30%;
 	max-width: 200px;
+	float: right;
 }
 
 .heavy{
@@ -35,3 +36,28 @@ h1,h2,h3,.indent,.category{
 	padding: 0;
 	margin: 0;
 }
+
+@media (max-width: 560px) { 
+	.img-thumbnail{
+		margin: 0;
+		width:30%;
+		max-width: 100px;
+		float: left;
+	}
+	div.indent{
+		padding-left: 1em;
+		border-left: 6px dotted #ccc;
+	}
+	h1{
+		font-size: 20pt;
+	}
+	h2.heavy{
+		font-size: 16pt;
+	}
+	div.crowd-up{
+		margin-top: -1em;
+	}
+	.content{
+		clear: both;
+	}
+ }
