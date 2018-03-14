@@ -4,13 +4,14 @@
     <div class="crowd-up">
         <h1>{{note.title}}: <span class="heavy">&#123;</span></h1>
         <div class="indent">
+            <img *ngIf="note.image" [src]="note.image.url" class="img-thumbnail pull-right" />
             <div class="content" [innerHtml]="note.content"></div>
         </div>},
         <div class="metadata">metadata : &#123;</div>
         <div class="indent small">
-            <div class="image">&#123; image : {{note.image||'[Not found]'}} },</div>
-            <div class="link">&#123; link : {{note.link||'[Not found]'}} },</div>
-            <div class="category">&#123; category : {{note.category}} }</div>    
+            <div class="image">&#123; image : {{note.image.url||'[Not found]' | json}} },</div>
+            <div class="link">&#123; link : {{note.link||'[Not found]' | json}} },</div>
+            <div class="category">&#123; category : {{note.category | json}} }</div>    
         </div>
       </div>}
     </div>

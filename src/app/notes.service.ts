@@ -9,7 +9,7 @@ export class NotesService {
   
   getNotes(params) {
     //return this.http.get('')
-    return this.http.get(`http://127.0.0.1:3000/api/notes?${params}`)
+    return this.http.get(`https://infinite-refuge-55973.herokuapp.com/api/notes?${params}`)
       .map((res:Response) => res.json());
   }
 }

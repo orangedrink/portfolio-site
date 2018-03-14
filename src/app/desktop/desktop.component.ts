@@ -172,17 +172,6 @@ export class DesktopComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe((params: Params) => {
-      var str = "";
-      for (var key in params) {
-        if (str != "") {
-          str += "&";
-        }
-        str += key + "=" + params[key];
-      }
-      if(str){
-        this.command(str);
-      }
-    });
+    this.command('about');
   }
 }
