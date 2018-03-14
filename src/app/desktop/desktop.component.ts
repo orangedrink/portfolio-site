@@ -113,6 +113,7 @@ export class DesktopComponent implements OnInit {
     let commandLine = queryString.split(' ');
     if(commandLine[0]=='about'||commandLine[0]=='portfolio'||commandLine[0]=='games'){
       this.cmdLines.push(`Querying endpoint for: ${commandLine[0]} data...`);
+      this.notesData = [];
       this.notesService.getNotes(`category=${commandLine[0]}`).subscribe(data => {
         this.notesData = data;
         this.cmdLines.push(`Success: ${data.length} entries found for '${commandLine[0]}'.`);
