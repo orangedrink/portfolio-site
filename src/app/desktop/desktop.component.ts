@@ -90,7 +90,6 @@ export class DesktopComponent implements OnInit {
   } 
   
   toTop(target){
-    console.log(target);
     if(target==='terminal'){
       this.terminal.closed=false;
       this.terminal.onTop=true;
@@ -184,6 +183,6 @@ export class DesktopComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.command('about');
+    //this.command('about');
   }
 }

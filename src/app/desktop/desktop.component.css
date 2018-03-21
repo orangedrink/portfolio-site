@@ -27,7 +27,7 @@
 	margin: 0 auto;
 	padding: 0;
 }
-.shortcut-icon span{
+.shortcut-icon span, .shortcut-icon a{
 	display: block;
 	text-align: center;
 	color:#ffffff;
@@ -35,6 +35,14 @@
 	width: 100%;
 }
 
+.resume-shortcut{
+	position: absolute;
+	bottom: 60px;
+}
+
+.resume-shortcut.shortcut-icon{
+	max-width:150px;
+}
 /* XP window styles */
 
 .panel{
@@ -153,7 +161,7 @@ div.panel.minimized{
 
 .notepad.panel{
 	left: 5%;
-	top:75px;
+	top:15%;
 	min-width: 170px;
 	width: 90%;
 	border-color: #1757c3;
