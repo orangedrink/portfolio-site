@@ -94,10 +94,12 @@ export class DesktopComponent implements OnInit {
       this.terminal.closed=false;
       this.terminal.onTop=true;
       this.notes.onTop=false;
+      this.terminal.minimized=false;
     }else{
       this.notes.closed=false;
       this.terminal.onTop=false;
       this.notes.onTop=true;
+      this.notes.minimized=false;
     }
   }
 
